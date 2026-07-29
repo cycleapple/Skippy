@@ -52,7 +52,7 @@ namespace Plugins.a08381.Skippy
 
             CommandManager.AddHandler("/sc", new CommandInfo(OnCommand)
             {
-                HelpMessage = "/sc: Roll your sanity check dice."
+                HelpMessage = "/sc：擲一次理智檢定骰。"
             });
         }
 
@@ -98,8 +98,8 @@ namespace Plugins.a08381.Skippy
             _csp.GetBytes(rndSeries);
             int rnd = (int)Math.Abs(BitConverter.ToUInt32(rndSeries, 0) / _base * 50 + 1);
             ChatGui.Print(_config.IsEnabled
-                ? $"sancheck: 1d100={rnd + 50}, Failed"
-                : $"sancheck: 1d100={rnd}, Passed");
+                ? $"理智檢定：1d100={rnd + 50}，失敗"
+                : $"理智檢定：1d100={rnd}，成功");
             _config.IsEnabled = !_config.IsEnabled;
             SetEnabled(_config.IsEnabled);
             Interface.SavePluginConfig(_config);
